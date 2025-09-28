@@ -18,9 +18,10 @@ int main() {
     while (mintC <= maxtC) {
         double T = mintC + 273; 
         double P = calculate_Pco2(T);
-        std::cout << "T: " << mintC << " °C, C: " << P << std::endl;
+        std::cout << "T: " << mintC << " Â°C, C: " << P << std::endl;
         mintC += 100; 
     }
 
     return 0;
+
 }
