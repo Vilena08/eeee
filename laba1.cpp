@@ -5,23 +5,32 @@
 ********************/
 
 #include <iostream>
-#include <cmath> 
-
-double calculate_Pco2(double T) {
-    return pow(10, (-8920.0 / T + 7.54));
-}
+#include <cmath>
 
 int main() {
+    // Объявление переменных
     int mintC = 600;
-    int maxtC = 1100;  
+    int maxtC = 1100;
 
-    while (mintC <= maxtC) {
-        double T = mintC + 273; 
-        double P = calculate_Pco2(T);
-        std::cout << "T: " << mintC << " °C, C: " << P << std::endl;
-        mintC += 100; 
+    double T, P; // объявление переменных
+
+    // Цикл с предусловием 
+    int tempC = mintC;
+    while (tempC <= maxtC) {
+        T = tempC + 273; // только расчет
+        P = pow(10, (-8920.0 / T + 7.54)); // расчёт
+        std::cout << "Temperature: " << tempC << " °C, Pco₂: " << P  << std::endl;
+        tempC += 100; 
     }
 
-    return 0;
+    // Цикл с постусловием 
+    int tempC2 = mintC;
+    do {
+        T = tempC2 + 273; 
+        P = pow(10, (-8920.0 / T + 7.54)); 
+        std::cout << "[do-while] Temperature: " << tempC2 << " °C, Pco₂: " << P << " atm" << std::endl;
+        tempC2 += 100; 
+    } while (tempC2 <= maxtC);
 
+    return 0;
 }
